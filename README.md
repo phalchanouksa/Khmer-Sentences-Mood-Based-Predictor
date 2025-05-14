@@ -18,6 +18,45 @@ A lightweight Flask web application that predicts the emotional tone of Khmer te
 - **AI Model**: Custom logic trained on 600+ Khmer sentences
 - **HTML/CSS**: Frontend interface
 
+# Model Performance Metrics
+
+This section summarizes the performance of the Khmer Mood Predictor model, evaluated on a test dataset. The model predicts emotional tones (**Happy**, **Sad**, **Motivational**) for Khmer text inputs.
+
+## Key Metrics
+
+- **Final Test Accuracy**: 94.92%
+- **Best Validation Accuracy**: 97.47%
+- **Average Cross-Validation Accuracy**: 91.27%
+- **Best Predicted Mood**: Sad
+
+## Classification Report
+
+The classification report details the model's performance across each mood class, including precision, recall, and F1-score, along with support (number of samples per class).
+
+| Mood         | Precision | Recall | F1-Score | Support |
+| ------------ | --------- | ------ | -------- | ------- |
+| Happy        | 0.96      | 0.91   | 0.93     | 53      |
+| Motivational | 0.95      | 0.99   | 0.97     | 77      |
+| Sad          | 0.94      | 0.94   | 0.94     | 67      |
+
+### Summary Statistics
+
+- **Overall Accuracy**: 94.92% (197 samples)
+- **Macro Average**:
+  - Precision: 0.95
+  - Recall: 0.94
+  - F1-Score: 0.95
+- **Weighted Average**:
+  - Precision: 0.95
+  - Recall: 0.95
+  - F1-Score: 0.95
+
+## Notes
+
+- The model performs best on the **Motivational** class, with the highest recall (0.99) and F1-score (0.97).
+- The **Sad** mood was the best-predicted overall, likely due to balanced precision and recall.
+- Cross-validation results indicate robust generalization, though the average CV accuracy (91.27%) is slightly lower than the test accuracy.
+
 ## Setup and Installation
 
 1. **Clone the repository**:
