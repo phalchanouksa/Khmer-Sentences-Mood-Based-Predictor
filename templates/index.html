@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mood Prediction - Fluent UI</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <!-- GitHub Link -->
+    <a
+      href="https://github.com/phalchanouksa/Khmer-Sentences-Mood-Based-Predictor"
+      target="_blank"
+      class="github-link"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="containerColor"
+      >
+        <path
+          d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.819-.26.819-.577v-2.165c-3.338.724-4.033-1.416-4.033-1.416-.546-1.386-1.333-1.756-1.333-1.756-1.087-.74.083-.724.083-.724 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.775.419-1.306.762-1.604-2.665-.302-5.466-1.332-5.466-5.93 0-1.31.468-2.382 1.236-3.22-.12-.3-.535-1.52.117-3.176 0 0 1.007-.322 3.299 1.23A11.508 11.508 0 0 1 12 5.803c.39 0 .778.054 1.156.16 2.3-1.553 3.298-1.23 3.298-1.23.653 1.655.24 2.876.118 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.478 5.92.43.372.814 1.101.814 2.22v3.37c0 .316.216.694.822.577C18.563 21.8 22 17.3 22 12A10 10 0 0 0 2 12z"
+        />
+      </svg>
+      View on GitHub
+    </a>
+
+    <div class="card">
+      <h1>Mood-Based Quote Predictor</h1>
+      <form method="POST" action="/predict">
+        <input
+          type="text"
+          name="text"
+          placeholder="Type something..."
+          required
+        />
+        <button type="submit">Predict Mood</button>
+      </form>
+
+      {% if mood %}
+      <div class="result">
+        Predicted Mood:
+        <span style="text-transform: capitalize">{{ mood }}</span>
+      </div>
+
+      <div class="proba-bar-container">
+        {% for label in ['happy', 'sad', 'motivational'] %}
+        <div class="proba-bar-label">
+          <span>{{ label.capitalize() }}</span>
+          <span class="proba-bar-percentage">{{ probs[label] }}%</span>
+        </div>
+        <div class="proba-bar-bg">
+          <div
+            class="proba-bar-fill {{ label }}"
+            style="width: {{ probs[label] }}%;"
+          ></div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
